@@ -10,3 +10,5 @@ temp/
 *.log
 *.swp
 .idea/
+
+# comment to demo changing a file

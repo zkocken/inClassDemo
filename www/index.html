@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="lab2">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="lab2">
+  <ion-nav-bar class="bar-positive">
+  </ion-nav-bar>
+
+  <ion-nav-view></ion-nav-view>
+
+   <script id="/index" type="text/ng-template">
+    <ion-view title="{{title}}">
+      <ion-header-bar class="bar bar-subheader bar-stable">
+        <h5 class="title" align="center">{{subheader}}
+        </h5>
+      </ion-header-bar>
+      <ion-content class="has-subheader">
+        <div class="bottom">
+          <div style="float: left; width: 100%;">
+            <label class="item item-input">
+              <input type="text" name="email" id="player1_name-textarea"
+                     ng-model="$parent.player1_name" placeholder="Player 1 Name">
+            </label>
+          </div>
+        </div>
+        <div class="bottom">
+          <div style="float: left; width: 100%;">
+            <label class="item item-input">
+              <input type="text" name="email" id="player2_name-textarea"
+                     ng-model="$parent.player2_name" placeholder="Player 2 Name">
+            </label>
+          </div>
+        </div>
+        <br><br><br><br><br><br><br><br><br>
+        <div class="bottom">
+          <div align="center">
+            <button style="float: none; width: 30%;" class="button button-royal button-large" ng-click="onStart()">
+              Start
+            </button>
+          </div>
+          </div>
+      </ion-content>
+    </ion-view>
+    </script>
+
+  <script id="/player" type="text/ng-template">
+    <ion-view title="{{title}}">
+      <ion-header-bar class="bar bar-subheader bar-stable">
+        <h5 class="title" align="center">
+          Current Turn - {{currentPlayer}}
+        </h5>
+      </ion-header-bar>
+    <ion-content>
+      <div class="item item-divider" align="center">
+        {{player1_name}} - {{player1_wins}} wins<br>
+        {{player2_name}} - {{player2_wins}} wins
+      </div>
+      <div class="bottom">
+      </div>
+        <div class="row">
+          <div align="center">
+            <img class="col-90" src="img/rock-paper-scissors.jpg" alt="rockPaperScissors" align="center">
+          </div>
+        </div>
+        <div class="row" style="padding-left:5%; padding-right:5%" align="center">
+          <button style="float: none; width: 33%;" class="button button-energized" ng-click="onNext('rock')">Rock</button>
+          <div class="col"></div>
+          <button style="float: none; width: 33%;" class="button button-calm" ng-click="onNext('paper')">Paper</button>
+          <div class="col"></div>
+          <button style="float: none; width: 33%;" class="button button-balanced" ng-click="onNext('scissors')">Scissors</button>
+        </div>
+        <br>
+    </ion-content>
+  </ion-view>
+    </script>
+
+  <script id="/results" type="text/ng-template">
+    <ion-view title="{{title}}">
+      <ion-header-bar class="bar bar-subheader bar-stable">
+        <h5 class="title" align="center">{{subheader}}</h5>
+      </ion-header-bar>
+      <ion-content class="has-subheader">
+        <br><br><br><br><br>
+        <h1 class="title" align="center">
+          {{winner}} wins!
+        </h1>
+        <br><br><br><br><br>
+        <div class="bottom">
+          <div align="center">
+            <button style="float: none; width: 30%;" class="button button-royal button-large" ng-click="onStart()">
+              Start
+            </button>
+          </div>
+        </div>
+      </ion-content>
+    </ion-view>
+  </script>
+
+  </body>
+</html>
